@@ -1,0 +1,21 @@
+{
+  "name": "helloworld",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "migrate":"./node_modules/.bin/sequelize db:migrate",
+    "seed":"./node_modules/.bin/sequelize db:seed:all",
+    "start": "npm run migrate && node server/server.js",
+    "dev": "npm run migrate && npm run seed && nodemon -L server/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.2",
+    "mysql2": "^1.5.1",
+    "sequelize": "^4.28.6",
+    "sequelize-cli": "^3.2.0"
+  }
+}

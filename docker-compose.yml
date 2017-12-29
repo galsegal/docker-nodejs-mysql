@@ -1,0 +1,29 @@
+version: '2'
+services:
+  db:
+    image: mysql
+    container_name: db-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - ./mysql-volume:/var/lib/mysql
+  web:
+    build: .
+    command: npm run dev
+    image: gals/node
+    container_name: node-web
+    depends_on:
+      - db
+    ports:
+      - "3000:3000"
+    volumes:
+      -  ./app/server:/app/server
+      -  ./app/client:/app/client
+    environment:
+      WEB_PORT: 3000
+      DB_NAME: users
+      DB_USERNAME: root
+      DB_PASSWORD: root
+  
+volumes:
+  mysql-volume:
